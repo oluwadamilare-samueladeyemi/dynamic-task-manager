@@ -10,6 +10,29 @@ const addButton = document.getElementById("addBtn");
 const deleteButton = document.getElementById("deleteBtn");
 const clearButton = document.getElementById("clearBtn");
 
+const taskList = document.getElementById("taskList");
+const selectAllBtn = document.getElementById("selectAllBtn");
+const deleteSelectedBtn = document.getElementById("deleteSelectedBtn");
+
+// render function
+function renderTasks() {
+  taskList.innerHTML = "";
+
+  myTasks.forEach((task, index) => {
+    const li = document.createElement("li");
+    li.className = "flex items-center justify-between bg-gray-700 p-2 rounded";
+
+    li.innerHTML = `
+      <div class="flex items-center gap-2">
+        <input type="checkbox" class="task-checkbox" data-index="${index}">
+        <span>${task}</span>
+      </div>
+    `;
+
+    taskList.appendChild(li);
+  });
+}
+
 // Add task button click event
 addButton.addEventListener("click", function() {
     
@@ -23,9 +46,11 @@ addButton.addEventListener("click", function() {
     }
 
     myTasks.push(newTask);
+    renderTasks();
 
     // Clear input field after adding
     inputField.value = "";
+    renderTasks();
     console.log("Numbered List:");
 
     // Classic for loop (index-based)
@@ -76,4 +101,28 @@ inputField.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
     addButton.click();
   }
+});
+
+deleteSelectedBtn.addEventListener("click", function () {
+  const checkboxes = document.querySelectorAll(".task-checkbox");
+
+  myTasks = myTasks.filter((_, index) => {
+    return !checkboxes[index].checked;
+  });
+
+  renderTasks();
+});
+
+let allSelected = false;
+
+selectAllBtn.addEventListener("click", function () {
+  const checkboxes = document.querySelectorAll(".task-checkbox");
+
+  allSelected = !allSelected;
+
+  checkboxes.forEach(cb => {
+    cb.checked = allSelected;
+  });
+
+  selectAllBtn.textContent = allSelected ? "Unselect All" : "Select All";
 });
