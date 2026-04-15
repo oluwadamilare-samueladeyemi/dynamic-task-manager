@@ -63,10 +63,17 @@ deleteButton.addEventListener("click", function(){
 
 // CLEAR ALL TASKS
 clearButton.addEventListener("click", function() {
- // Remove all items using a while loop
   while (myTasks.length > 0) {
     myTasks.pop();
   }
- // Confirm array is empty
   console.log("All tasks cleared! Array is now empty:", myTasks);
+});
+
+
+// ADD TASK WITH ENTER KEY
+inputField.addEventListener("keypress", function (event) {
+
+  if (event.key === "Enter") {
+    addButton.click();
+  }
 });
