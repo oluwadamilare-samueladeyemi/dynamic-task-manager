@@ -9,8 +9,8 @@
 </head>
 
 <body class="bg-gray-900 text-white flex items-center justify-center h-screen">
-    
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg w-96">
+    <div>
+        <form class="bg-gray-800 p-6 rounded-lg shadow-lg w-96">
             <h1 class="text-2xl font-bold mb-4 text-center">Task Manager</h1>
 
             <input type="text" id="taskInput" placeholder="Enter task..." class="w-full p-2 mb-3 rounded text-black">
@@ -28,21 +28,21 @@
             </button>
 
             <!-- Select All + Delete Selected -->
-<div class="flex justify-between mt-3 mb-2">
-    <button id="selectAllBtn" class="bg-blue-500 px-2 py-1 rounded text-sm">
-        Select All
-    </button>
+            <div class="flex justify-between mt-3 mb-2">
+                <button id="selectAllBtn" class="bg-blue-500 px-2 py-1 rounded text-sm">
+                    Select All
+                </button>
 
-    <button id="deleteSelectedBtn" class="bg-red-600 px-2 py-1 rounded text-sm">
-        Delete Selected
-    </button>
-</div>
+                <button id="deleteSelectedBtn" class="bg-red-600 px-2 py-1 rounded text-sm">
+                    Delete Selected
+                </button>
+            </div>
 
-<!-- Task List -->
-<ul id="taskList" class="mt-3 space-y-2"></ul>
-        </div>
+            <!-- Task List -->
+            <ul id="taskList" class="mt-3 space-y-2"></ul>
+        </form>
     </div>
-   
+
     <script src="script.js"></script>
 </body>
 
